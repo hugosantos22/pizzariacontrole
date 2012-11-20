@@ -1,0 +1,46 @@
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         xmlns:android="http://schemas.android.com/apk/res/android"
+         android:orientation="vertical">
+    
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp" 
+        android:src="@drawable/app1"
+        />
+
+    <Button
+        android:id="@+id/btCadCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="btFuncCadastraCliente"
+        android:text="@string/botaoCliente" />
+
+    <Button
+        android:id="@+id/btPedido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/botaoCadastro"
+        android:onClick="btFuncPedido"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/botaoBusca"
+        />
+    <Button
+        android:id="@+id/btCadCardapio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/botaoCadCardapio"
+        android:onClick="btFuncCAadCardapio"
+        />
+    <Button
+        android:id="@+id/btCardapio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:text="@string/botaoCardapio"
+        android:onClick="btFuncCardapio"
+        />
+</LinearLayout>
