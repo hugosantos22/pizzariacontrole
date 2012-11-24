@@ -14,8 +14,8 @@
         android:id="@+id/btCadCliente"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btFuncCadastraCliente"
-        android:text="@string/botaoCliente" />
+        android:onClick="btFuncChamaCliente"
+        android:text="@string/botaochaCliente" />
 
     <Button
         android:id="@+id/btPedido"
@@ -25,16 +25,18 @@
         android:onClick="btFuncPedido"
         />
     <Button
+        android:id="@+id/btFinalizarPedido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:text="@string/botaoBusca"
+        android:onClick="btFuncFinalizarPedido"
         />
     <Button
         android:id="@+id/btCadCardapio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
-        android:text="@string/botaoCadCardapio"
-        android:onClick="btFuncCAadCardapio"
+        android:text="@string/botaochaCardapio"
+        android:onClick="btFuncChamarProduto"
         />
     <Button
         android:id="@+id/btCardapio"

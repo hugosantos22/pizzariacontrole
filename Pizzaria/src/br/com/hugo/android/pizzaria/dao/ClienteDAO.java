@@ -1,4 +1,4 @@
-package br.com.hugo.android.pizzaria.dao;
+ package br.com.hugo.android.pizzaria.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class ClienteDAO extends Dao<Cliente> {
 			if(c.moveToFirst()){
 				do {
 					Cliente cliente = new Cliente();
-					cliente.setId(c.getColumnIndex(Column.ID));
+					cliente.setId(c.getInt(c.getColumnIndex(Column.ID)));
 					cliente.setNome(c.getString(c.getColumnIndex(Column.NOME)));
 					cliente.setEmail(c.getString(c.getColumnIndex(Column.EMAIL)));
 					cliente.setRua(c.getString(c.getColumnIndex(Column.RUA)));
@@ -89,13 +89,13 @@ public class ClienteDAO extends Dao<Cliente> {
 		
 		try {
 			String columns[] = new String[] {Column.ID,Column.NOME,Column.EMAIL,Column.RUA,Column.BAIRRO,Column.NUMERO};
-			c = db.query(TABELA, columns, Column.ID + "=",new String[]{String.valueOf(i)}, null, null, null, null);
+			c = db.query(TABELA, columns, Column.ID + " = ?",new String[]{String.valueOf(i)}, null, null, null, null);
 			
 			Cliente cliente = new Cliente();
 			
 			if(c.moveToFirst()){
 				
-				cliente.setId(c.getColumnIndex(Column.ID));
+				cliente.setId(c.getInt(c.getColumnIndex(Column.ID)));
 				cliente.setNome(c.getString(c.getColumnIndex(Column.NOME)));
 				cliente.setEmail(c.getString(c.getColumnIndex(Column.EMAIL)));
 				cliente.setRua(c.getString(c.getColumnIndex(Column.RUA)));

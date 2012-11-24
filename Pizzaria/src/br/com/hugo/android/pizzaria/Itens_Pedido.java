@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ public class Itens_Pedido extends Activity {
 		
 		Intent i = getIntent();
 		b = i.getExtras();
-		
+		Log.d("teste continuar pedido", "idpedido = " + b.getInt("idpedido"));
 		Spinner produtos= (Spinner) findViewById(R.id.produto);
 		
 		produto = new ArrayList<Produto>();
@@ -59,8 +60,8 @@ public class Itens_Pedido extends Activity {
 			
 		}else{
 			Itens_pedidoDAO.getItens_pedidoDAO(getApplicationContext()).update(item);
+			messagemAviso("Confirmação", "Cadastro Atualizado com sucesso");
 		}
-		
 	}
 	public void messagemAviso(String titulo, String msg) {
 		AlertDialog.Builder mensagem = new AlertDialog.Builder(

@@ -1,4 +1,4 @@
-package br.com.hugo.android.pizzaria.dao;
+ package br.com.hugo.android.pizzaria.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +55,7 @@ public class ProdutoDAO extends Dao<Produto> {
 					do {
 						Produto produto = new Produto();
 						
-						produto.setId(c.getColumnIndex(Column.ID));
+						produto.setId(c.getInt(c.getColumnIndex(Column.ID)));
 						produto.setNome(c.getString(c.getColumnIndex(Column.NOME)));
 						produto.setDescricao(c.getString(c.getColumnIndex(Column.DESCRICAO)));
 						produto.setPreco(c.getFloat(c.getColumnIndex(Column.PRECO)));
@@ -82,9 +82,28 @@ public class ProdutoDAO extends Dao<Produto> {
 		
 		return null;
 	}
+	public Float selectPrecoProduto(int produto){
+		float valor = (float) 0;
+		SQLiteDatabase db = getDB();
+		Cursor c = null;
+		try {
+			String columns[] = new String[]{Column.PRECO};
+			c = db.query(TABELA, columns, Column.ID + " = ?",new String[]{String.valueOf(produto)}, null, null, null, null);
+			if(c.moveToFirst()){
+				valor = c.getFloat(0);
+				db.close();
+				c.close();
+			}
+		} catch (Exception e) {
+			Log.e(this.getClass().getName(),
+					"Falha na leitura dos dados.", e);
+		}
+		return valor;
+	}
 
 	@Override
 	public Produto select(int i) {
+		
 		
 		SQLiteDatabase db = getDB();
 		
@@ -92,12 +111,12 @@ public class ProdutoDAO extends Dao<Produto> {
 		
 		try {
 			String columns[] = new String[]{Column.ID,Column.NOME,Column.DESCRICAO,Column.PRECO};
-			c = db.query(TABELA, columns, Column.ID + "=",new String[]{String.valueOf(i)}, null, null, null, null);
+			c = db.query(TABELA, columns, Column.ID + " = ?",new String[]{String.valueOf(i)}, null, null, null, null);
 			
 			Produto produto = new Produto();
 			if(c.moveToFirst()){
 				
-				produto.setId(c.getColumnIndex(Column.ID));
+				produto.setId(c.getInt(c.getColumnIndex(Column.ID)));
 				produto.setNome(c.getString(c.getColumnIndex(Column.NOME)));
 				produto.setDescricao(c.getString(c.getColumnIndex(Column.DESCRICAO)));
 				produto.setPreco(c.getFloat(c.getColumnIndex(Column.PRECO)));

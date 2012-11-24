@@ -44,7 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="right" >
+        android:gravity="right"
+        android:layout_marginBottom="15dp" >
 
         <Button           
             android:id="@+id/voltar_produto" 
@@ -67,6 +68,5 @@
             android:text="@string/salvar"
             android:onClick= "SalvarProduto" />
     </LinearLayout>
-    
-
+   
 </LinearLayout>

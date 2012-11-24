@@ -25,6 +25,7 @@ public class Pedido extends Activity {
 	private Cliente cli;
 	private List clientes;
 	private br.com.hugo.android.pizzaria.entity.Pedido pedido;
+	ArrayAdapter<Cliente> adcliente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,7 @@ public class Pedido extends Activity {
 		clientes = new ArrayList<Cliente>();
 		clientes = ClienteDAO.getClienteDao(getApplicationContext()).selectAll();
 		
-		ArrayAdapter<Cliente> adcliente = new ArrayAdapter<Cliente>(getApplicationContext(),
+		adcliente = new ArrayAdapter<Cliente>(getApplicationContext(),
 				android.R.layout.simple_spinner_item,clientes);
 		
 		cliente.setAdapter(adcliente);
@@ -55,8 +56,7 @@ public class Pedido extends Activity {
 		
 	 
 		Cliente cl = (Cliente) cliente.getSelectedItem();
-		Log.d("SpinnerTest", "id do cliente: " + cl.getId());
-		
+
 		int m = Integer.parseInt(mesa.getSelectedItem().toString());
 		if(pedido == null){
 			pedido = new br.com.hugo.android.pizzaria.entity.Pedido();

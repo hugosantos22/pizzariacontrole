@@ -1,6 +1,7 @@
 package br.com.hugo.android.pizzaria.dao;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import br.com.hugo.android.pizzaria.dao.ClienteDAO.Column;
 import br.com.hugo.android.pizzaria.entity.Pedido;
 
 public class PedidoDAO extends Dao<Pedido> {
@@ -40,11 +42,69 @@ public class PedidoDAO extends Dao<Pedido> {
 	@Override
 	public List<Pedido> selectAll() {
 		
+		SQLiteDatabase db = getDB();
+		Cursor c = null;
+		String columns[] = new String[]{Column.ID,Column.CLIENTE,Column.DATA,Column.MESA};
+		c = db.query(TABELA, columns, null, null, null, null, null);
+		List<Pedido> alltodos = new ArrayList<Pedido>();
+		try {
+			
+			if(c.moveToFirst()){
+				do {
+					Pedido pedido = new Pedido();
+					
+					pedido.setId(c.getInt(c.getColumnIndex(Column.ID)));
+					pedido.setCliente(c.getInt(c.getColumnIndex(Column.CLIENTE)));
+					pedido.setData(c.getString(c.getColumnIndex(Column.DATA)));
+					pedido.setMesa(c.getColumnIndex(Column.MESA));
+					Log.d("PedidoDao", "idpedido " + pedido.getId() );
+					alltodos.add(pedido);
+					
+				} while (c.moveToNext());
+			}
+			return alltodos;
+		} catch (Exception e) {
+			Log.e(this.getClass().getName(),
+					"Falha na leitura dos dados.", e);
+		}finally{
+			if(c != null){
+				c.close();
+			}
+			db.close();
+		}
+		
 		return null;
 	}
 
 	@Override
 	public Pedido select(int i) {
+		
+		SQLiteDatabase db = getDB();
+		Cursor c = null;
+		try {
+			String columns[] = new String[]{Column.ID,Column.CLIENTE,Column.DATA,Column.MESA};
+			c = db.query(TABELA, columns, Column.ID + " = ?",new String[]{String.valueOf(i)}, null, null, null, null);
+			Pedido pedido = new Pedido();
+			if(c.moveToFirst()){
+							
+				pedido.setId(c.getInt(c.getColumnIndex(Column.ID)));
+				pedido.setCliente(c.getInt(c.getColumnIndex(Column.CLIENTE)));
+				pedido.setData(c.getString(c.getColumnIndex(Column.DATA)));
+				pedido.setMesa(c.getColumnIndex(Column.MESA));
+				
+				return pedido;
+			}
+			
+		} catch (Exception e) {
+			Log.e(this.getClass().getName(),
+					"Falha na leitura dos dados.", e);
+		}finally{
+			if(c != null){
+				c.close();
+				
+			}
+			db.close();
+		}
 		
 		return null;
 	}

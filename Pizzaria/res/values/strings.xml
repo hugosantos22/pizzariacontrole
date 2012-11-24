@@ -4,10 +4,19 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_principal">Pizzaria Controle</string>
     <string name="botaoCadastro">Cadastrar Pedido</string>
-    <string name="botaoBusca">Buscar Pedido</string> 
+    <string name="botaoBusca">Finalizar Pedido</string> 
     <string name="botaoCliente">Cadastrar Cliente</string>
+    <string name="botaoBusCliente">Buscar Cliente</string>
+    <string name="botaochaCliente">Cliente</string>
     <string name="botaoCardapio">Cardapio</string>
-    <string name="botaoCadCardapio">Cadastrar Produto</string>    
+    <string name="botaofinalizar">Finalizar Pedido</string>
+    <string name="botaoCadCardapio">Cadastrar Produto</string>
+    <string name="botaochaCardapio">Produto</string>
+    <string name="menufinalizar">Finalizar Pedido</string>  
+    <string name="menucontinuar">Continuar Pedido</string>
+    <string name="menueditar">Editar</string>  
+    <string name="menudeletar">Deletar</string>
+    <string name="buscarproduto">Buscar Produto</string>      
     <string name="nome">Nome:</string>
     <string name="email">Email:</string>
     <string name="endereco">Endereço</string>
@@ -28,6 +37,7 @@
     <string name="pedido">Pedido:</string>
     <string name="data">Data:</string>
     <string name="mesa">Mesa:</string>
+    <string name="valor">Valor Conta:</string>
     <string name="TextoCardapio">cardapio da pizzaria tal numero tal bairro tal</string>
     <string-array name="spiner_mesa">
         <item >1</item>

@@ -25,6 +25,13 @@
         <activity android:name=".Cardapio" />
         <activity android:name=".CadastrarProduto" />
         <activity android:name=".Itens_Pedido" />
+        <activity android:name=".FinalizarPedido" />
+        <activity android:name=".BuscarProduto" />
+        <activity android:name=".ContinuarPedido" />
+        <activity android:name=".conta" />
+        <activity android:name=".BuscarCliente" />
+        <activity android:name=".ProdutoEscolha" />
+        <activity android:name=".ClienteEscolha" />
     </application>
 
 </manifest>

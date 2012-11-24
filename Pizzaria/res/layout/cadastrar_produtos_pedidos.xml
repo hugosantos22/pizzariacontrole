@@ -28,27 +28,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text" />
-	<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:orientation="horizontal" >
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/voltar" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/limpar" />
-
+	
             <Button
                 android:id="@+id/salvarItem"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/salvar"
                 android:onClick="salvarItem" />
-        </LinearLayout>
+      
 </LinearLayout>

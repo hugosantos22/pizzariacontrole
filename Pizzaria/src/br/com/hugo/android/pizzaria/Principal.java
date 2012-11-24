@@ -15,8 +15,8 @@ public class Principal extends Activity {
 
 	}
 	
-	public void btFuncCadastraCliente(View v) {		
-		Intent i = new Intent(getApplicationContext(), CadastraCliente.class);
+	public void btFuncChamaCliente(View v){
+		Intent i = new Intent(getApplicationContext(),ClienteEscolha.class);
 		startActivity(i);
 	}
 	public void btFuncPedido(View v){
@@ -29,9 +29,13 @@ public class Principal extends Activity {
 		Intent it = new Intent(getApplicationContext(),Cardapio.class);
 		startActivity(it);
 	}
-	public void btFuncCAadCardapio(View v){
-		Intent itn = new Intent(getApplicationContext(),CadastrarProduto.class);
-		startActivity(itn);
+	public void btFuncFinalizarPedido(View v){
+		Intent ip = new Intent(getApplicationContext(),FinalizarPedido.class);
+		startActivity(ip);
+	}
+	public void btFuncChamarProduto(View v){
+		Intent id = new Intent(getApplicationContext(),ProdutoEscolha.class);
+		startActivity(id);
 	}
 
 	@Override

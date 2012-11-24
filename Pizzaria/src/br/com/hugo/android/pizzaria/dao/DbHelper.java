@@ -54,7 +54,7 @@ public class DbHelper extends SQLiteOpenHelper {
 			
 			String tblpedido = "CREATE TABLE "+ PedidoDAO.TABELA 
 					+ "(_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,"
-					+"cliente INTERGER NOT NULL,"
+					+"cliente INTEGER NOT NULL,"
 					+"data TEXT NOT NULL,"
 					+"mesa INTEGER NOT NULL);";
 			

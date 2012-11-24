@@ -17,12 +17,34 @@ public class CadastraCliente extends Activity {
 	EditText bairro;
 	EditText numero;
 	
+	private int idcliente;
 	private Cliente cliente;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.cadastrar_cliente);
+		Bundle bundle = getIntent().getExtras();
+		if(bundle != null){
+			idcliente = bundle.getInt("idcliente");
+			cliente = new Cliente();
+			cliente =  ClienteDAO.getClienteDao(getApplicationContext()).select(idcliente);
+			
+			if(cliente != null){
+				
+				EditText nome = (EditText) findViewById(R.id.nome);
+				EditText email = (EditText) findViewById(R.id.email);
+				EditText rua = (EditText) findViewById(R.id.rua);
+				EditText bairro = (EditText) findViewById(R.id.bairro);
+				EditText numero = (EditText) findViewById(R.id.numero);
+				
+				nome.setText(cliente.getNome());
+				email.setText(cliente.getEmail());
+				rua.setText(cliente.getRua());
+				bairro.setText(cliente.getBairro());
+				numero.setText(cliente.getNumero());
+			}
+		}
 
 	}
 	public void Salvar(View v){
@@ -58,15 +80,15 @@ public class CadastraCliente extends Activity {
 	}
 	public void Voltar(View v){
 		
-		Intent i = new Intent(getApplicationContext(),Principal.class);
+		Intent i = new Intent(getApplicationContext(),ClienteEscolha.class);
 		startActivity(i);
 	}
 	public void Limpar(View v){
-		nome.setText("");
-		email.setText("");
-		rua.setText("");
-		bairro.setText("");
-		numero.setText("");	
+		nome.setText(null);
+		email.setText(null);
+		rua.setText(null);
+		bairro.setText(null);
+		numero.setText(null);	
 	}
 	public void messagemAviso(String titulo, String msg) {
 		AlertDialog.Builder mensagem = new AlertDialog.Builder(

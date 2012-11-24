@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import br.com.hugo.android.pizzaria.entity.Itens_pedido;
@@ -40,6 +41,32 @@ public class Itens_pedidoDAO extends Dao<Itens_pedido> {
 
 	@Override
 	public Itens_pedido select(int i) {
+		
+		SQLiteDatabase db = getDB();
+		Cursor c = null;
+		try {
+			String columns[] = new String[]{Column.ID,Column.PEDIDO,Column.PRODUTO,Column.QUANTIDADE};
+			c = db.query(TABELA, columns, Column.PEDIDO + " = ?", new String[]{String.valueOf(i)}, null, null, null, null);
+			Itens_pedido item =  new Itens_pedido();
+			if(c.moveToFirst()){
+				item.setId(c.getInt(c.getColumnIndex(Column.ID)));
+				item.setPedido(c.getInt(c.getColumnIndex(Column.PEDIDO)));
+				item.setProduto(c.getInt(c.getColumnIndex(Column.PRODUTO)));
+				item.setQuantidade(c.getInt(c.getColumnIndex(Column.QUANTIDADE)));
+				
+				return item;
+			}
+			
+		} catch (Exception e) {
+			Log.e(this.getClass().getName(),
+					"Falha na leitura dos dados.", e);
+		}finally{
+			if(c != null){
+				c.close();
+				
+			}
+			db.close();
+		}
 		
 		return null;
 	}

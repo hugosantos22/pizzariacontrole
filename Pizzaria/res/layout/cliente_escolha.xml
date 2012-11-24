@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp" 
+        android:src="@drawable/app1"
+        />
+    <Button
+            android:id="@+id/cadastra_cliente"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@string/botaoCliente"
+            android:onClick= "btFuncCadastraCliente"
+            android:gravity="center" />
+    <Button
+            android:id="@+id/buscar_cliente"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:text="@string/botaoBusCliente"
+            android:onClick= "btFuncBuscarCliente"
+            android:gravity="center" />
+
+</LinearLayout>
